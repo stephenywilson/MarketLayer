@@ -1,9 +1,9 @@
 /**
- * MarketLayer by Catalayer — Screenshot capture script
- * Dev-only. Does not contain API keys or secrets.
- * Usage: node scripts/capture-screenshots.mjs
+ * MarketLayer by Catalayer — Screenshot capture script (dev only)
+ * No API keys or secrets. Run: node scripts/capture-screenshots.mjs
+ * Requires: frontend running on localhost:5173
  */
-import { createRequire } from 'module';
+import { chromium } from 'playwright';
 import { mkdirSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
@@ -12,90 +12,99 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const OUT = join(__dirname, '../docs/screenshots');
 mkdirSync(OUT, { recursive: true });
 
-// Resolve playwright from frontend/node_modules since it is not installed at repo root
-const frontendModules = join(__dirname, '../frontend/node_modules');
-const { chromium } = await import(join(frontendModules, 'playwright/index.mjs'));
-
 const BASE = 'http://localhost:5173';
 const W = 1440;
 const H = 900;
 
-async function capture(page, filename, description) {
-  await page.waitForTimeout(800);
-  await page.screenshot({ path: join(OUT, filename), clip: { x: 0, y: 0, width: W, height: H } });
-  console.log(`✅ ${filename} — ${description}`);
-}
-
 (async () => {
   const browser = await chromium.launch({ headless: true });
-  const ctx = await browser.newContext({ viewport: { width: W, height: H } });
-  const page = await ctx.newPage();
 
-  // ── 1. Mode selection (fresh state)
-  await page.goto(BASE);
-  await page.evaluate(() => {
-    localStorage.removeItem('marketlayerPreferredMode');
-    localStorage.removeItem('marketlayer_starter_onboarding_seen');
-  });
-  await page.reload({ waitUntil: 'networkidle' });
-  await page.waitForTimeout(1200);
-  await capture(page, 'mode-selection.png', 'Mode selection page');
-
-  // ── 2. Starter Mode
-  // Try clicking Starter button or card
-  try {
-    const btn = page.locator('text=Starter').first();
-    if (await btn.isVisible({ timeout: 2000 })) {
-      await btn.click();
-      await page.waitForTimeout(1500);
-    }
-  } catch {}
-  // If we're still on mode selection, navigate directly
-  const url = page.url();
-  if (url === BASE + '/' || url === BASE) {
-    await page.goto(BASE + '/?mode=starter');
+  // ── 1. Mode selection — fresh state, no prefs ──────────────────────────
+  {
+    const ctx = await browser.newContext({ viewport: { width: W, height: H } });
+    await ctx.addInitScript(() => { localStorage.clear(); });
+    const page = await ctx.newPage();
+    await page.goto(BASE, { waitUntil: 'networkidle' });
     await page.waitForTimeout(1500);
+    await page.screenshot({ path: join(OUT, 'mode-selection.png'), clip: { x: 0, y: 0, width: W, height: H } });
+    console.log('✅ mode-selection.png');
+    await ctx.close();
   }
-  await capture(page, 'starter-mode.png', 'Starter Mode dashboard');
 
-  // ── 3. Switch to Advanced Mode
-  try {
-    const adv = page.locator('text=Advanced, text=ADVANCED').first();
-    if (await adv.isVisible({ timeout: 2000 })) {
-      await adv.click();
+  // ── 2. Starter Mode — onboarding hidden, no previous scan ─────────────
+  {
+    const ctx = await browser.newContext({ viewport: { width: W, height: H } });
+    await ctx.addInitScript(() => {
+      localStorage.setItem('marketlayer_starter_onboarding_seen', '1');
+      localStorage.setItem('marketlayerPreferredMode', 'starter');
+      localStorage.removeItem('marketlayer:starter:last-report');
+      localStorage.removeItem('marketlayer:starter:last-report-ver');
+    });
+    const page = await ctx.newPage();
+    await page.goto(BASE, { waitUntil: 'networkidle' });
+    await page.waitForTimeout(1800);
+    await page.screenshot({ path: join(OUT, 'starter-mode.png'), clip: { x: 0, y: 0, width: W, height: H } });
+    console.log('✅ starter-mode.png');
+    await ctx.close();
+  }
+
+  // ── 3. Advanced Mode ───────────────────────────────────────────────────
+  {
+    const ctx = await browser.newContext({ viewport: { width: W, height: H } });
+    await ctx.addInitScript(() => {
+      localStorage.setItem('marketlayer_starter_onboarding_seen', '1');
+      localStorage.setItem('marketlayerPreferredMode', 'advanced');
+      localStorage.removeItem('marketlayer:starter:last-report');
+    });
+    const page = await ctx.newPage();
+    await page.goto(BASE, { waitUntil: 'networkidle' });
+    await page.waitForTimeout(1800);
+    await page.screenshot({ path: join(OUT, 'advanced-mode.png'), clip: { x: 0, y: 0, width: W, height: H } });
+    console.log('✅ advanced-mode.png');
+    await ctx.close();
+  }
+
+  // ── 4. Settings drawer ─────────────────────────────────────────────────
+  {
+    const ctx = await browser.newContext({ viewport: { width: W, height: H } });
+    await ctx.addInitScript(() => {
+      localStorage.setItem('marketlayer_starter_onboarding_seen', '1');
+      localStorage.setItem('marketlayerPreferredMode', 'starter');
+    });
+    const page = await ctx.newPage();
+    await page.goto(BASE, { waitUntil: 'networkidle' });
+    await page.waitForTimeout(1200);
+    // Settings button is the last button in the bottom action bar
+    const btn = page.locator('button').filter({ hasText: 'Settings' }).last();
+    if (await btn.isVisible({ timeout: 4000 }).catch(() => false)) {
+      await btn.click();
       await page.waitForTimeout(1200);
     }
-  } catch {}
-  await capture(page, 'advanced-mode.png', 'Advanced Mode dashboard');
+    await page.screenshot({ path: join(OUT, 'settings-drawer.png'), clip: { x: 0, y: 0, width: W, height: H } });
+    console.log('✅ settings-drawer.png');
+    await ctx.close();
+  }
 
-  // ── 4. Settings drawer
-  try {
-    const settings = page.locator('text=Settings').first();
-    if (await settings.isVisible({ timeout: 2000 })) {
-      await settings.click();
-      await page.waitForTimeout(1000);
+  // ── 5. Skill Packs picker ──────────────────────────────────────────────
+  {
+    const ctx = await browser.newContext({ viewport: { width: W, height: H } });
+    await ctx.addInitScript(() => {
+      localStorage.setItem('marketlayer_starter_onboarding_seen', '1');
+      localStorage.setItem('marketlayerPreferredMode', 'advanced');
+    });
+    const page = await ctx.newPage();
+    await page.goto(BASE, { waitUntil: 'networkidle' });
+    await page.waitForTimeout(1200);
+    const btn = page.locator('button').filter({ hasText: /Skills/ }).first();
+    if (await btn.isVisible({ timeout: 4000 }).catch(() => false)) {
+      await btn.click();
+      await page.waitForTimeout(1200);
     }
-  } catch {}
-  await capture(page, 'settings-drawer.png', 'Settings drawer');
-
-  // Close settings
-  try {
-    const esc = page.locator('[aria-label="Close"]').first();
-    if (await esc.isVisible({ timeout: 1000 })) await esc.click();
-    else await page.keyboard.press('Escape');
-  } catch {}
-  await page.waitForTimeout(500);
-
-  // ── 5. Skill Packs picker
-  try {
-    const skills = page.locator('text=Skills').first();
-    if (await skills.isVisible({ timeout: 2000 })) {
-      await skills.click();
-      await page.waitForTimeout(1000);
-    }
-  } catch {}
-  await capture(page, 'skill-packs.png', 'Skill Packs picker');
+    await page.screenshot({ path: join(OUT, 'skill-packs.png'), clip: { x: 0, y: 0, width: W, height: H } });
+    console.log('✅ skill-packs.png');
+    await ctx.close();
+  }
 
   await browser.close();
-  console.log(`\n📸 All screenshots saved to ${OUT}`);
+  console.log(`\nAll screenshots saved to ${OUT}`);
 })();
