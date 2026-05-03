@@ -45,7 +45,7 @@ export function ModeSwitch({ compact }: { compact?: boolean }) {
             : "text-ml-text-muted hover:text-ml-text",
         ].join(" ")}
       >
-        Pro
+        Advanced
       </button>
     </div>
   );

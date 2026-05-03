@@ -63,13 +63,13 @@ export function ModeSelection() {
               size={24}
               className="text-ml-text-dim group-hover:text-ml-accent transition-colors"
             />
-            <h2 className="mt-5 text-2xl font-semibold text-ml-text">Pro Mode</h2>
+            <h2 className="mt-5 text-2xl font-semibold text-ml-text">Advanced Mode</h2>
             <p className="mt-2 text-[14px] text-ml-text-dim leading-relaxed">
               Same console with deeper control: universe, full skill packs,
               advanced evidence tabs, and the full report.
             </p>
             <div className="mt-6 inline-flex h-8 items-center justify-center gap-1.5 rounded-[10px] border border-ml-border-strong bg-ml-panel-2 px-3.5 text-sm leading-none text-ml-text-dim transition-colors group-hover:border-ml-accent/55 group-hover:text-ml-text w-fit">
-              Open Pro Mode <Icon name="arrow-right" size={12} />
+              Open Advanced Mode <Icon name="arrow-right" size={12} />
             </div>
           </button>
         </section>

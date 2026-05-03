@@ -65,7 +65,7 @@ export function StrategyLab() {
           Strategy packs
         </h1>
         <p className="mt-1 text-[13px] text-ml-text-dim max-w-2xl">
-          Built-in strategy packs used automatically in Starter Mode and inspectable in Pro Mode.
+          Built-in strategy packs used automatically in Starter Mode and inspectable in Advanced Mode.
         </p>
       </header>
 

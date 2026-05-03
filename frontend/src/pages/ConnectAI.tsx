@@ -119,7 +119,7 @@ export function ConnectAI() {
             <p className="mt-1 text-[12px] text-ml-text-dim">
               Current mode:{" "}
               <span className="font-medium text-ml-text">
-                {mode === "starter" ? "Starter Mode" : "Pro Mode"}
+                {mode === "starter" ? "Starter Mode" : "Advanced Mode"}
               </span>
             </p>
           </div>
@@ -132,7 +132,7 @@ export function ConnectAI() {
             onClick={() => setMode("starter")}
           />
           <ExperienceModeCard
-            title="Pro Mode"
+            title="Advanced Mode"
             active={mode === "pro"}
             body="Full control over data, news, strategy packs, signals, risk, and AI providers."
             onClick={() => setMode("pro")}

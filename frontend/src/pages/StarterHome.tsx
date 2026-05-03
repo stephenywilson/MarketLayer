@@ -699,7 +699,7 @@ function ControlColumn({
           className="w-full border border-ml-border bg-ml-panel px-4 py-3 text-left transition-colors hover:border-ml-border-strong hover:bg-ml-panel-hover"
         >
           <div className="text-[12px] font-medium text-ml-text">Need more control?</div>
-          <div className="mt-1 text-[12px] text-ml-accent">Open Pro Mode →</div>
+          <div className="mt-1 text-[12px] text-ml-accent">Open Advanced Mode →</div>
           <div className="mt-2 text-[10px] leading-relaxed text-ml-text-muted">
             Strategies · Signals · Risk · Providers
           </div>
@@ -2096,7 +2096,7 @@ function HeroConsole({
     <section className="ml-panel-strong border-ml-accent/25 p-4 shadow-glow">
       <div className="flex items-start justify-between gap-4 flex-wrap">
         <div>
-          <div className="ml-label">{isPro ? "Pro Mode" : "AI Market Report"}</div>
+          <div className="ml-label">{isPro ? "Advanced Mode" : "AI Market Report"}</div>
           <h1 className="mt-2 max-w-3xl text-2xl md:text-3xl font-semibold tracking-tight text-ml-text">
             {isPro
               ? "Pro Control Console"
@@ -2437,7 +2437,7 @@ function SkillsPicker({
           className="pointer-events-none absolute bottom-[calc(100%+8px)] left-1/2 z-50 -translate-x-1/2 opacity-0 transition-opacity duration-200 group-hover:opacity-100"
         >
           <div className="whitespace-nowrap rounded-[8px] border border-ml-border-strong bg-ml-bg-elev px-3 py-1.5 text-[11px] text-ml-text-dim shadow-2xl shadow-black/50">
-            Switch to <span className="font-semibold text-ml-accent">Pro Mode</span> to customize Skills.
+            Switch to <span className="font-semibold text-ml-accent">Advanced Mode</span> to customize Skills.
           </div>
           <div className="absolute left-1/2 top-full h-0 w-0 -translate-x-1/2 border-x-[5px] border-t-[5px] border-x-transparent border-t-ml-border-strong" />
         </div>
@@ -3342,7 +3342,7 @@ function SettingsDrawer({
           <div className="ml-label">Current mode</div>
           <div className="mt-2 flex items-baseline gap-2">
             <span className="text-[14px] font-semibold text-ml-text">
-              {mode === "pro" ? "Pro Mode" : "Starter Mode"}
+              {mode === "pro" ? "Advanced Mode" : "Starter Mode"}
             </span>
             <span className="text-[11px] text-ml-text-muted">Switch mode from the top bar.</span>
           </div>

@@ -25,7 +25,7 @@ export function ApiDocs() {
         <h1 className="mt-2 text-2xl font-semibold">MarketLayer API Docs</h1>
         <p className="mt-1 max-w-3xl text-[13px] leading-relaxed text-ml-text-dim">
           Local API reference for the open-source MarketLayer backend. These
-          routes power both Starter Mode and Pro Mode; they do not connect to
+          routes power both Starter Mode and Advanced Mode; they do not connect to
           brokerages or perform market actions.
         </p>
       </header>
@@ -49,7 +49,7 @@ export function ApiDocs() {
       </section>
 
       <RouteSection title="Starter Mode Routes" rows={STARTER_ROUTES} />
-      <RouteSection title="Pro Mode Routes" rows={PRO_ROUTES} />
+      <RouteSection title="Advanced Mode Routes" rows={PRO_ROUTES} />
 
       <section className="ml-panel p-5">
         <div className="ml-label">Provider & Mode Routes</div>

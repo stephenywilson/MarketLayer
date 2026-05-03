@@ -15,7 +15,7 @@
 
 ---
 
-![MarketLayer main console](docs/screenshots/starter-console.png)
+![MarketLayer main console](docs/screenshots/starter-mode.png)
 
 ---
 
@@ -62,12 +62,11 @@ MarketLayer is built by Catalayer and follows the Catalayer product direction, b
 
 | Screenshot | Description |
 |---|---|
-| ![Start screen](docs/screenshots/start-screen.png) | Mode selection — choose Starter or Advanced on first launch |
-| ![Starter console](docs/screenshots/starter-console.png) | Starter Mode — one-click scan with bullish and bearish candidates |
-| ![Advanced console](docs/screenshots/advanced-console.png) | Advanced Mode — full control over universe, skill packs, and risk filters |
-| ![Settings panel](docs/screenshots/settings-panel.png) | Settings drawer — configure your AI provider and news sources |
-| ![Skill packs](docs/screenshots/skill-packs.png) | Skill Packs picker — enable built-in packs or add Catalayer AI Packs |
-| ![Full report](docs/screenshots/full-report.png) | Full Report modal — complete scan output with all data tabs |
+| ![Mode selection](docs/screenshots/mode-selection.png) | Mode selection — choose Starter or Advanced on first launch |
+| ![Starter Mode](docs/screenshots/starter-mode.png) | Starter Mode — one-click market scan for beginners |
+| ![Advanced Mode](docs/screenshots/advanced-mode.png) | Advanced Mode — full control over universe, skill packs, AI provider, and evidence tabs |
+| ![Settings](docs/screenshots/settings-drawer.png) | Settings — connect AI providers and optional Catalayer services |
+| ![Skill Packs](docs/screenshots/skill-packs.png) | Skill Packs — inspect and configure the analysis modules powering each scan |
 
 ---
 

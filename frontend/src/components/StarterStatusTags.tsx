@@ -41,7 +41,7 @@ export function StarterStatusTags() {
 
   return (
     <div className="flex flex-wrap items-center gap-2">
-      <StatusTag>{mode === "pro" ? "Pro" : "Starter"}</StatusTag>
+      <StatusTag>{mode === "pro" ? "Advanced" : "Starter"}</StatusTag>
       <StatusTag title={providerName !== "None" ? `Provider: ${providerName}` : undefined}>
         {aiStatus}
       </StatusTag>
