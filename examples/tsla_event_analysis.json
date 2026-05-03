@@ -1,0 +1,17 @@
+{
+  "ticker": "TSLA",
+  "event_text": "Tesla announced a price reduction across Model 3 and Model Y trims in China, citing competitive dynamics in the local EV market.",
+  "classification": "pricing_action",
+  "impact": "mixed",
+  "short_term_view": "Sample short-term view: pricing actions historically pull forward demand but compress unit margin. Market reaction will hinge on sell-through evidence over the next print.",
+  "medium_term_view": "Sample medium-term view: durable margin trajectory depends on FSD attach, energy storage mix, and software gross margin expansion.",
+  "risk_factors": [
+    "Margin compression beyond consensus",
+    "Competitive response from local OEMs",
+    "FX and macro headwinds in China demand"
+  ],
+  "market_impact_score": 62,
+  "confidence_score": 58,
+  "provider_used": "mock",
+  "disclaimer": "MarketLayer is for research and educational purposes only. It does not provide financial advice, investment recommendations, or trading instructions."
+}

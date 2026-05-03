@@ -1,0 +1,61 @@
+{
+  "ticker": "NVDA",
+  "company_name": "NVIDIA Corporation",
+  "company_overview": "Designs accelerated computing platforms used across AI training, inference, gaming, professional visualization, and automotive workloads.",
+  "latest_market_movement": "Shares trading near recent highs after sector rotation into AI-adjacent names. 1d change +1.84%.",
+  "key_catalysts": [
+    {
+      "title": "Datacenter GPU demand cycle",
+      "description": "Hyperscaler capex commentary continues to anchor near-term datacenter expectations.",
+      "impact": "positive"
+    },
+    {
+      "title": "Supply allocation",
+      "description": "Channel checks suggest tighter allocation through the back half of the year.",
+      "impact": "mixed"
+    },
+    {
+      "title": "Macro / rates regime",
+      "description": "Long-duration multiples remain rate-sensitive at current valuations.",
+      "impact": "neutral"
+    }
+  ],
+  "sec_filing_highlights": [
+    {
+      "form": "10-Q",
+      "filed_at": "2025-Q3",
+      "summary": "Mock 10-Q highlight: management reiterated full-year datacenter guidance and noted continued sequential growth in inference workloads."
+    },
+    {
+      "form": "8-K",
+      "filed_at": "2025-09",
+      "summary": "Mock 8-K highlight: routine governance disclosure with no material change to strategy."
+    }
+  ],
+  "news_event_summary": "Sample event summary: NVIDIA announced an expansion of its Blackwell platform availability across major cloud providers, framed by management as broadening enterprise inference adoption.",
+  "bull_case": [
+    "Durable AI infrastructure capex cycle with diversified hyperscaler demand",
+    "Software / CUDA moat compounding alongside hardware refresh cadence",
+    "Optionality from sovereign AI deployments and enterprise inference"
+  ],
+  "bear_case": [
+    "Concentration risk in top hyperscaler customers",
+    "Multiple compression risk if rates remain restrictive",
+    "Custom silicon competition from major customers"
+  ],
+  "risk_factors": [
+    "Export-control regime changes",
+    "Hyperscaler capex digestion",
+    "Operational execution on supply ramp"
+  ],
+  "market_impact_score": 78,
+  "confidence_score": 71,
+  "watchlist_triggers": [
+    "Daily volume > 1.5x 30-day average",
+    "Break of 50-day moving average with confirmation",
+    "Hyperscaler capex revision in next earnings cycle"
+  ],
+  "final_summary": "Sample NVDA research summary: balanced setup. Datacenter demand remains the dominant variable; risks are concentration and macro multiple compression rather than secular thesis decay.",
+  "provider_used": "mock",
+  "disclaimer": "MarketLayer is for research and educational purposes only. It does not provide financial advice, investment recommendations, or trading instructions."
+}

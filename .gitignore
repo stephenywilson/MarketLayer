@@ -1,0 +1,71 @@
+# ── Credentials & secrets — NEVER commit these ──────────────────────────────
+.env
+.env.*
+!.env.example
+.env.local
+.env.*.local
+.env.bak
+*.env.bak
+.runtime_config.json
+runtime_config.json
+*.pem
+*.key
+*.p12
+*.pfx
+
+# ── Python ───────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+env/
+ENV/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+dist/
+build/
+pip-wheel-metadata/
+
+# ── Node / Frontend ──────────────────────────────────────────────────────────
+node_modules/
+frontend/dist/
+frontend/.vite/
+frontend/.turbo/
+*.tsbuildinfo
+
+# ── Local databases ──────────────────────────────────────────────────────────
+*.sqlite
+*.sqlite3
+*.db
+*.duckdb
+data/
+storage/
+
+# ── Model weights (never commit) ─────────────────────────────────────────────
+models/
+*.bin
+*.gguf
+*.pt
+*.safetensors
+*.onnx
+
+# ── Logs ─────────────────────────────────────────────────────────────────────
+*.log
+logs/
+
+# ── IDE / OS ─────────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.swp
+
+# ── Misc ─────────────────────────────────────────────────────────────────────
+.coverage
+htmlcov/
+未命名文件夹/
