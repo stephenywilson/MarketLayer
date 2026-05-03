@@ -18,7 +18,7 @@ export function ModeSelection() {
         <header className="ml-card-enter text-center" style={{ animationDelay: "0.05s" }}>
           <div className="flex items-center justify-center">
             <img
-              src="/ml-logo_white.png?v=20260502"
+              src="/marketlayer-logo-white.png"
               alt="MarketLayer by Catalayer"
               className="h-12 w-auto"
             />

@@ -1,6 +1,6 @@
 # Open Source Boundary
 
-This document defines what is included in the MarketLayer open-source repository and what belongs to Catalayer's private infrastructure.
+This document defines what is included in the MarketLayer by Catalayer open-source repository and what belongs to Catalayer's private infrastructure.
 
 ---
 

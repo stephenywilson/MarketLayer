@@ -462,7 +462,7 @@ export function StarterHome() {
       <header className="h-14 border-b border-ml-border ml-console-nav-bg">
         <div className="h-full px-5 md:px-7 flex items-center gap-4">
           <button type="button" onClick={() => navigate(isPro ? "/pro/command-center" : "/")} className="flex items-center gap-3">
-            <img src="/ml-logo_white.png?v=20260502" alt="MarketLayer" className="h-7 w-auto" />
+            <img src="/marketlayer-logo-white.png" alt="MarketLayer" className="h-7 w-auto" />
           </button>
           <div className="hidden lg:block text-[10.5px] uppercase tracking-[0.18em] text-ml-text-muted">
             AI Quant Decision Console

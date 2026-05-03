@@ -61,7 +61,7 @@ export function CommandCenter() {
       <div>
         <div className="ml-label">COMMAND CENTER</div>
         <h1 className="mt-2 text-3xl font-semibold tracking-tight text-ml-text">
-          MarketLayer - Catalayer
+          MarketLayer by Catalayer
         </h1>
         <p className="mt-1 text-[13px] text-ml-text-dim max-w-2xl">
           Open-source AI quant research pipeline for US equities.

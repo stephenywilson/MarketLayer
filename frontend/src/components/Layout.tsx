@@ -101,7 +101,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <div className="h-[104px] border-b border-ml-border flex items-center justify-center px-3">
           <Link to="/" className="flex items-center justify-center">
             <img
-              src="/ml-logo_white.png?v=20260502"
+              src="/marketlayer-logo-white.png"
               alt="MarketLayer"
               className="h-auto w-[168px] object-contain"
             />

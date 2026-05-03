@@ -1,4 +1,6 @@
-# MarketLayer — AI Quant Decision Console
+# MarketLayer by Catalayer
+
+### AI Quant Decision Console for US Stock Market Research
 
 ![Open Source](https://img.shields.io/badge/Open%20Source-Apache%202.0-blue)
 ![Research Only](https://img.shields.io/badge/Research%20Only-No%20Trading-orange)
@@ -7,7 +9,7 @@
 ![Ollama Ready](https://img.shields.io/badge/Local%20AI-Ollama%20Ready-green)
 ![OpenAI Compatible](https://img.shields.io/badge/Cloud%20AI-OpenAI%20Compatible-412991)
 
-**An open-source AI market research console for US stocks. Bring your own AI provider or run fully locally with Ollama. Research only — no brokerage connection, no trading execution.**
+**MarketLayer by Catalayer is an open-source AI market research console for US stocks. Bring your own AI provider or run fully locally with Ollama. Research only — no brokerage connection, no trading execution.**
 
 > ⚠️ **Research & Education Only** — MarketLayer does not provide financial advice, trading signals, brokerage services, portfolio management, or buy/sell instructions. It is research and education software. Scan results are AI-generated output based on public data and are not investment recommendations. Users are solely responsible for their own financial decisions.
 
@@ -29,9 +31,11 @@ MarketLayer is not a trading bot, a signal service, or a portfolio manager. It i
 
 ---
 
-## Built from the Catalayer product direction
+## Built by Catalayer
 
-MarketLayer is built from the [Catalayer](https://catalayer.com) product direction and shares its open-source infrastructure. It is published as an independent open-source release under the Apache 2.0 license.
+MarketLayer by Catalayer is built by [Catalayer](https://catalayer.com) and follows the Catalayer product direction. It is published as an independent open-source release under the Apache 2.0 license.
+
+MarketLayer is built by Catalayer and follows the Catalayer product direction, but this open-source repository is independently runnable without any Catalayer private services.
 
 **What IS included in this repository:**
 
@@ -125,7 +129,7 @@ Advanced Mode is not a separate product. It is the same pipeline with the hood o
 ### Clone
 
 ```bash
-git clone https://github.com/catalayer-ai/marketlayer.git
+git clone https://github.com/stephenywilson/MarketLayer.git
 cd marketlayer
 ```
 

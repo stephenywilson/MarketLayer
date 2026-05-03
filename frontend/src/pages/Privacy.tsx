@@ -26,7 +26,7 @@ export function Privacy() {
         <div className="ml-label">PRIVACY</div>
         <h1 className="mt-2 text-2xl font-semibold">Privacy & Research Disclaimer</h1>
         <p className="mt-1 max-w-3xl text-[13px] leading-relaxed text-ml-text-dim">
-          MarketLayer - Catalayer is designed as a local, open-source AI market
+          MarketLayer by Catalayer is designed as a local, open-source AI market
           research tool. It is not a brokerage product and does not perform
           automated market actions.
         </p>
