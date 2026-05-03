@@ -816,7 +816,7 @@ function StarterAutopilotControls({
 
       <ControlBlock title="AI Provider" meta="Ready">
         <div className="flex items-center justify-between gap-3 border border-ml-border bg-ml-bg px-3 py-2">
-          <span className="text-[12px] text-ml-text-dim">Demo AI / Connected AI</span>
+          <span className="text-[12px] text-ml-text-dim">No Provider / Connected AI</span>
           <button type="button" onClick={onSettings} className="text-[11px] text-ml-accent">
             Connect AI Key
           </button>
@@ -965,7 +965,7 @@ function ProControls({
           value={aiProvider}
           onChange={onAiProviderChange}
           options={[
-            { value: "demo", label: "Demo AI" },
+            { value: "demo", label: "No Provider (mock)" },
             { value: "catalayer", label: "Catalayer AI" },
             { value: "openai", label: "OpenAI-compatible" },
             { value: "claude", label: "Claude" },
@@ -1017,7 +1017,7 @@ function StarterPipelineColumn({
           <EvidenceRow label="Universe" value={(report?.universe ?? market.defaultUniverse).slice(0, 10).join(" · ")} />
           <EvidenceRow label="Data Ready" value="Public prices · public headlines · recent filings" />
           <EvidenceRow label="Skill Layer" value={`${activePacks.length} active packs loaded`} />
-          <EvidenceRow label="AI Mode" value={aiProvider === "demo" ? "Demo AI ready" : `${providerShortName(aiProvider)} selected`} />
+          <EvidenceRow label="AI Mode" value={aiProvider === "demo" ? "Mock provider (no key)" : `${providerShortName(aiProvider)} selected`} />
           <EvidenceRow label="Output" value={`${reportDepth === "simple" ? "Simple" : "Detailed"} report format`} />
         </div>
       </ConsolePanel>
@@ -1565,7 +1565,7 @@ function ProEvidencePanel({
             <EvidenceRow label="Prices" value={report?.data_used.price_source ?? "yfinance / public prices"} />
             <EvidenceRow label="Headlines" value={report?.data_used.news_source ?? "Yahoo Finance RSS"} />
             <EvidenceRow label="Filings" value={report?.data_used.filing_source ?? "SEC EDGAR"} />
-            <EvidenceRow label="AI Provider" value={report?.provider === "mock" ? "Demo AI" : report?.data_used.ai_provider ?? "Demo AI"} />
+            <EvidenceRow label="AI Provider" value={report?.provider === "mock" ? "Mock (no provider)" : report?.data_used.ai_provider ?? "Not configured"} />
             <EvidenceRow label="Universe" value={(report?.universe ?? DEFAULT_UNIVERSE).join(" · ")} />
             <EvidenceRow label="Skill Packs" value={activePacks.map((p) => shortPackName(p.name)).join(" · ") || "—"} />
           </div>
@@ -1891,7 +1891,7 @@ function StarterAIPanel({
               <EvidenceRow label="Prices" value={report?.data_used.price_source ?? "yfinance / public prices"} />
               <EvidenceRow label="Headlines" value={report?.data_used.news_source ?? "Yahoo Finance RSS / public headlines"} />
               <EvidenceRow label="Filings" value={report?.data_used.filing_source ?? "SEC EDGAR metadata"} />
-              <EvidenceRow label="AI" value={report?.provider === "mock" ? "Demo AI" : report?.data_used.ai_provider ?? "Demo AI"} />
+              <EvidenceRow label="AI" value={report?.provider === "mock" ? "Mock (no provider)" : report?.data_used.ai_provider ?? "Not configured"} />
               <EvidenceRow label="Universe" value={(report?.universe ?? DEFAULT_UNIVERSE).join(" · ")} />
               <EvidenceRow label="Skill Packs" value={activePacks.map((pack) => shortPackName(pack.name)).join(" · ")} />
             </div>
@@ -2169,7 +2169,7 @@ function EvidenceColumn({
           <EvidenceRow label="Prices" value={report?.data_used.price_source ?? "Public prices"} />
           <EvidenceRow label="Headlines" value={report?.data_used.news_source ?? "Public headlines"} />
           <EvidenceRow label="Filings" value={report?.data_used.filing_source ?? "Recent filings"} />
-          <EvidenceRow label="AI" value={report?.provider === "mock" ? "Demo AI" : report?.data_used.ai_provider ?? "Demo AI"} />
+          <EvidenceRow label="AI" value={report?.provider === "mock" ? "Mock (no provider)" : report?.data_used.ai_provider ?? "Not configured"} />
           <EvidenceRow label="Universe" value={(report?.universe ?? DEFAULT_UNIVERSE).join(" · ")} />
         </div>
       </ConsolePanel>
@@ -2832,7 +2832,7 @@ function DetailedReportTabContent({
           <EvidenceRow label="Prices" value={report.data_used.price_source} />
           <EvidenceRow label="Headlines" value={report.data_used.news_source} />
           <EvidenceRow label="Filings" value={report.data_used.filing_source} />
-          <EvidenceRow label="AI" value={report.provider === "mock" ? "Demo AI" : report.data_used.ai_provider} />
+          <EvidenceRow label="AI" value={report.provider === "mock" ? "Mock (no provider)" : report.data_used.ai_provider} />
           <EvidenceRow label="Scan Time" value={report.generated_at} />
           <EvidenceRow label="Universe" value={report.universe.join(" · ")} />
         </div>
@@ -3497,7 +3497,7 @@ function SettingsDrawer({
           })()}
           {provider === "mock" ? (
             <div className="rounded-[10px] border border-ml-accent/30 bg-ml-accent/5 px-3 py-2 text-[12px] text-ml-text-dim">
-              <span className="font-semibold text-ml-accent">Demo AI is ready.</span> No key required.
+              <span className="font-semibold text-ml-accent">Mock provider active.</span> Connect a real AI provider for live analysis.
             </div>
           ) : (
             <p className="text-[11px] text-ml-text-muted">
@@ -3624,7 +3624,7 @@ function FirstUseGuide() {
     <section className="ml-panel p-5">
       <div className="ml-label">Start in 3 steps</div>
       <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-3">
-        <GuideStep index="1" text="Use Demo AI or connect your own AI key." />
+        <GuideStep index="1" text="Connect an AI provider (Ollama, OpenAI, Claude, Gemini) or use the mock provider for testing." />
         <GuideStep index="2" text="Click Analyze Market." />
         <GuideStep index="3" text="Review bullish and bearish candidates." />
       </div>
@@ -4249,7 +4249,7 @@ function shortPackName(name: string) {
 }
 
 function providerShortName(provider: string) {
-  if (provider === "demo" || provider === "mock") return "Demo AI";
+  if (provider === "demo" || provider === "mock") return "No Provider";
   if (provider === "openai") return "OpenAI";
   if (provider === "claude" || provider === "anthropic") return "Claude";
   if (provider === "gemini") return "Gemini";
@@ -4292,14 +4292,14 @@ function packPresetToIds(value: string): string[] | null {
 }
 
 function providerDisplayName(provider: ProviderInfo) {
-  if (provider.id === "mock") return "Demo AI";
+  if (provider.id === "mock") return "No Provider";
   if (provider.id === "anthropic") return "Claude";
   return provider.name;
 }
 
 function providerLabel(id: string, info?: ProviderInfo): string {
   if (info) return providerDisplayName(info);
-  if (id === "mock") return "Demo AI";
+  if (id === "mock") return "No Provider";
   if (id === "catalayer") return "Catalayer AI";
   if (id === "openai") return "OpenAI";
   if (id === "anthropic") return "Claude";
@@ -4328,7 +4328,7 @@ function candidateSkillPacks(_ticker: string, tone: "bullish" | "bearish") {
 // Full supported provider list — used as the dropdown source when /api/providers
 // is unreachable so the user can still pick + paste a key offline.
 const fallbackProviders: ProviderInfo[] = [
-  { id: "mock", name: "Demo AI", description: "No key required", requires_api_key: false, configured: true, env_keys: [], is_local: true, is_placeholder: false },
+  { id: "mock", name: "No Provider (mock)", description: "Synthetic deterministic output — connect a real AI provider for live analysis", requires_api_key: false, configured: true, env_keys: [], is_local: true, is_placeholder: false },
   { id: "catalayer", name: "Catalayer AI", description: "Catalayer market-reasoning provider", requires_api_key: true, configured: false, env_keys: ["CATALAYER_API_KEY"], is_local: false, is_placeholder: false },
   { id: "openai", name: "OpenAI-compatible", description: "OpenAI / Together / Groq / Fireworks / DeepInfra etc.", requires_api_key: true, configured: false, env_keys: ["OPENAI_API_KEY", "OPENAI_BASE_URL", "OPENAI_MODEL"], is_local: false, is_placeholder: false },
   { id: "anthropic", name: "Claude", description: "Anthropic Claude", requires_api_key: true, configured: false, env_keys: ["ANTHROPIC_API_KEY", "ANTHROPIC_MODEL"], is_local: false, is_placeholder: false },

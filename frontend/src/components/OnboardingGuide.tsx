@@ -40,7 +40,7 @@ const STEPS: Step[] = [
   {
     id: "bottom-bar",
     title: "Run a scan in one click",
-    body: "Choose a market, scan style, and AI provider. Then click Analyze Market. Demo AI works without a key, or you can connect your own AI key in Settings.",
+    body: "Choose a market, scan style, and AI provider. Then click Analyze Market. Ollama works locally without a key, or connect your own AI key in Settings.",
     target: "bottom-bar",
   },
 ];

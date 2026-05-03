@@ -139,7 +139,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
               className={aiStatus === "Connected" || aiStatus === "Demo Mode" ? "ml-pill text-ml-accent border-ml-accent/30" : "ml-pill text-ml-warn border-ml-warn/30"}
               title={providerName !== "None" ? `Provider: ${providerName}` : undefined}
             >
-              {aiStatus === "Demo Mode" ? "Demo AI" : aiStatus === "Connected" ? "AI Connected" : "AI Not Connected"}
+              {aiStatus === "Demo Mode" ? "No Provider" : aiStatus === "Connected" ? "AI Connected" : "AI Not Connected"}
             </span>
             <span className="ml-pill">Public Data</span>
             {mode === "pro" && (

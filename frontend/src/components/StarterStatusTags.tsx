@@ -3,11 +3,11 @@ import type { ReactNode } from "react";
 import { listProviders } from "../api/client";
 import { useMode } from "../hooks/useMode";
 
-type AIStatus = "Demo AI" | "AI Connected" | "AI Not Connected";
+type AIStatus = "No Provider" | "AI Connected" | "AI Not Connected";
 
 export function StarterStatusTags() {
   const { mode } = useMode();
-  const [aiStatus, setAiStatus] = useState<AIStatus>("Demo AI");
+  const [aiStatus, setAiStatus] = useState<AIStatus>("No Provider");
   const [providerName, setProviderName] = useState("Mock");
 
   useEffect(() => {
@@ -18,7 +18,7 @@ export function StarterStatusTags() {
         if (cancelled) return;
         const current = providers.providers.find((p) => p.id === providers.current);
         if (providers.current === "mock" || current?.id === "mock") {
-          setAiStatus("Demo AI");
+          setAiStatus("No Provider");
           setProviderName("Mock");
         } else if (current?.configured) {
           setAiStatus("AI Connected");
@@ -29,7 +29,7 @@ export function StarterStatusTags() {
         }
       } catch {
         if (!cancelled) {
-          setAiStatus("Demo AI");
+          setAiStatus("No Provider");
           setProviderName("Mock");
         }
       }
